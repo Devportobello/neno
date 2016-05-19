@@ -76,6 +76,14 @@ $translation = $displayData;
             <label for="comment-check-<?php echo $translation->id; ?>" class="comment-breadcrumbs">
                 <?php echo implode(' &gt; ', $translation->breadcrumbs); ?>
             </label>
+            <input type="checkbox" id="comment-filters-<?php echo $translation->id; ?>" class="comment-check"
+                   data-content-id="<?php echo $translation->content_id; ?>"/>
+            <label for="comment-filters-<?php echo $translation->id; ?>">
+                <?php echo JText::_('COM_NENO_COMMENTS_TO_TRANSLATOR_EDITOR_MODAL_FILTERS_LABEL'); ?>
+            </label>
+            <label for="comment-filters-<?php echo $translation->id; ?>" class="comment-breadcrumbs">
+                <?php echo implode(' &gt; ', $translation->breadcrumbs); ?>
+            </label>
         </p>
         <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">
             <?php echo JText::_('COM_NENO_COMMENTS_TO_TRANSLATOR_MODAL_BTN_CLOSE'); ?>
