@@ -194,7 +194,7 @@ function pushFiltersToUrl() {
 
 /**
  * Load the matching string into the string list below the filter
- * @param reset boolean Weather this is a fresh load or not
+ * @param reset boolean Whether this is a fresh load or not
  * @returns {undefined}
  */
 function loadStrings(reset) {
