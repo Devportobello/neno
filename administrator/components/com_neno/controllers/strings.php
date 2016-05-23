@@ -34,7 +34,7 @@ class NenoControllerStrings extends JControllerAdmin
 		$filterGroups   = array ();
 		$filterElements = array ();
 		$filterField    = array ();
-		$filterFile    = array ();
+		$filterFile     = array ();
 		$filterMethods  = array ();
 		$filterStatus   = array ();
 		$outputLayout   = strtolower($input->getString('outputLayout'));

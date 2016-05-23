@@ -193,6 +193,63 @@ function pushFiltersToUrl() {
 
 
 /**
+ * Takes the current filter state and changes the URL to reflect it
+ */
+function pushFiltersToModal() {
+
+	// Make sure the variables we use are updated from the DOM
+	updateFilterState();
+
+	// Create an array with filters
+	var groups = [];
+
+	if (nenoeditor.filters.groupselements.length !== 0) {
+		for (var i = 0; i < nenoeditor.filters.groupselements.length; i++) {
+			var data = nenoeditor.filters.groupselements[i].split('-');
+			urlElements.push(data[0] + '[]=' + data[1]);
+		}
+	}
+	else {
+		nenoeditor.filters.groupselements.push('groups-none');
+		urlElements.push('group[]=none');
+	}
+
+	if (nenoeditor.filters.statuses.length !== 0) {
+		for (var i = 0; i < nenoeditor.filters.statuses.length; i++) {
+			var data = nenoeditor.filters.statuses[i].split('-');
+			urlElements.push('status[]=' + data[1]);
+		}
+	} else {
+		nenoeditor.filters.statuses.push('status-none');
+		urlElements.push('status[]=none');
+	}
+
+	if (nenoeditor.filters.methods.length !== 0) {
+		for (var i = 0; i < nenoeditor.filters.methods.length; i++) {
+			var data = nenoeditor.filters.methods[i].split('-');
+			urlElements.push('type[]=' + data[1]);
+		}
+	} else {
+		nenoeditor.filters.methods.push('method-none');
+		urlElements.push('type[]=none');
+	}
+
+	if (nenoeditor.filters.search !== '') {
+		urlElements.push('search=' + encodeURIComponent(nenoeditor.filters.search));
+	}
+
+	var url = document.location.origin + document.location.pathname + '?option=com_neno&view=editor';
+
+	if (urlElements.length !== 0) {
+		history.pushState(null, null, url + '&' + urlElements.join('&'));
+	}
+	else {
+		history.pushState(null, null, url);
+	}
+
+}
+
+/**
  * Load the matching string into the string list below the filter
  * @param reset boolean Whether this is a fresh load or not
  * @returns {undefined}
